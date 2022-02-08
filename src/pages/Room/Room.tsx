@@ -34,19 +34,16 @@ const Room:React.FC<RoomProps> = ({user}) => {
         const getUsers = async ():Promise<object> => {
             const {data} = await axios(`/rooms/${id}`);
             setUsers(data.users);
-            const obj = [...allMessages, ...data.messages];
-            setAllMessages(obj);
+            setAllMessages(data.messages);
             return data;
         }
         getUsers();
         socket.on('setUsers', (users):void => {
-            console.log(users);
             setUsers(users);
         });
         
         socket.on('sendMessage', (message) => {
-            const obj = [...allMessages, message];
-            setAllMessages(obj);
+            setAllMessages(state => [...state, message]);
         });
 
     }, []);
@@ -58,10 +55,8 @@ const Room:React.FC<RoomProps> = ({user}) => {
     const onSendMessage:KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
         if(e.key !== 'Enter') return;
         const message = {userName: user, content, roomId: id};
-        console.log(message)
         socket.emit('newMessage', message);
-        const obj = [...allMessages, message];
-        setAllMessages(obj);
+        setAllMessages(state => [...state, message]);
         setContent('');
     }
 

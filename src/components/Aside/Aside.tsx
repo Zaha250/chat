@@ -9,9 +9,10 @@ type AsideProps = {
 const Aside:React.FC<AsideProps> = ({users}) => {
     return (
         <aside className={classes.aside}>
+            <strong>Пользователи:</strong>
             <ul>
                 { users && users.map(user => (
-                    <li key={user.id + user.name}><strong>{user.name}</strong></li>
+                    <li key={user.id + user.name}>{user.name}</li>
                 )) }
             </ul>
         </aside>
