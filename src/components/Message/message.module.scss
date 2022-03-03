@@ -7,12 +7,21 @@
   }
 }
 
-.content{
+.message{
   display: inline-block;
-  background-color: #c879ff;
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 8px 12px;
-  border-radius: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+.content{
+  background: #7B61FF;
+  border-radius: 0px 10px 10px 10px;
+}
+
+.own{
+  background: #E4E3FF;
+  border-radius: 0px 10px 10px 10px;
+  color: #000;
 }

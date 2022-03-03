@@ -4,47 +4,45 @@ import socket from "../../socket";
 import axios from "axios";
 import classes from './room.module.scss';
 import Header from "../../components/Header/Header";
-import { UserTypes } from '../../types';
+import {MessageTypes, UserTypes } from '../../types';
 import Aside from "../../components/Aside/Aside";
 import Message from "../../components/Message/Message";
 import { Input } from 'antd';
+import {useSelector} from "react-redux";
+import {getUserState} from '../../store/user/selectors';
 
 const { TextArea } = Input;
 
 type ParamsTypes = {
-    id: string
+    login: string
 }
 
-type MessageTypes = {
-    userName: string,
-    content: string
-}
-
-type RoomProps = {
-    user: string
-}
-
-const Room:React.FC<RoomProps> = ({user}) => {
-    const {id} = useParams<ParamsTypes>();
+const Room:React.FC = () => {
+    const {login} = useParams<ParamsTypes>();
     const [users, setUsers] = useState<UserTypes[]>([]);
     const [content, setContent] = useState<string>('');
-    const [allMessages, setAllMessages] = useState<MessageTypes[]>([]);
+    const [allMessages, setAllMessages] = useState<MessageTypes[]>([
+        {content: 'привет, как дела?', userName: 'Alisa', own: false },
+        {content: 'привет, нормально', userName: 'Alex', own: true },
+        {content: 'Как твои?', userName: 'Alex', own: true },
+    ]);
+    const user = useSelector(getUserState);
 
     useEffect(():void => {
-        const getUsers = async ():Promise<object> => {
+        /*const getUsers = async ():Promise<object> => {
             const {data} = await axios(`/rooms/${id}`);
             setUsers(data.users);
             setAllMessages(data.messages);
             return data;
         }
-        getUsers();
-        socket.on('setUsers', (users):void => {
+        getUsers();*/
+        /*socket.on('setUsers', (users):void => {
             setUsers(users);
         });
         
         socket.on('sendMessage', (message) => {
             setAllMessages(state => [...state, message]);
-        });
+        });*/
 
     }, []);
 
@@ -54,28 +52,28 @@ const Room:React.FC<RoomProps> = ({user}) => {
 
     const onSendMessage:KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
         if(e.key !== 'Enter') return;
-        const message = {userName: user, content, roomId: id};
-        socket.emit('newMessage', message);
-        setAllMessages(state => [...state, message]);
-        setContent('');
+        // const message = {userName: name, content, roomId: id};
+        // socket.emit('newMessage', message);
+        // setAllMessages(state => [...state, message]);
+        // setContent('');
     }
 
     return (
         <div className={classes.room}>
-            <Aside users={users} />
-            <div className={classes.right}>
-                <Header roomId={id ? id : ''} count={users.length} />
-                <main>
+            <Header />
+            <div className={classes.body}>
+                <Aside users={users} />
+                <main className={classes.main}>
                     <div className={classes.list}>
                         { allMessages.length && allMessages.map((message, i) => (
-                            <Message content={message.content} key={i} />
+                            <Message message={message} key={i} />
                         )) }
                     </div>
 
                     <TextArea
                         value={content}
                         onChange={onChangeMessage}
-                        onKeyPress={onSendMessage}
+                        onPressEnter={onSendMessage}
                         className={classes.textarea}
                     />
                 </main>

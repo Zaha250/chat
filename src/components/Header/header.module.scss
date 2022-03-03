@@ -1,5 +1,25 @@
 .header{
   display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #F6F6F8;
+  margin-bottom: 20px;
+}
+
+.profile{
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: auto;
+}
+
+.photo{
+  margin-right: 12px;
+}
+
+.name{
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000;
 }

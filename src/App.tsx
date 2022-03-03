@@ -1,22 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 import socket from './socket';
 import './App.css';
-import Connect from "./pages/Connect/Connect";
+import Auth from "./pages/Auth/Auth";
 import Room from "./pages/Room/Room";
+import Registration from "./pages/Registration/Registration";
 
 const App:React.FC = () => {
-    const [user, setUser] = useState<string>('');
 
   useEffect((): void => {
     socket.on("connect", () => {
+        console.log(socket.id);
     });
   }, []);
 
   return(
     <Routes>
-      <Route path='/' element={<Connect setUser={setUser} />} />
-      <Route path='/room/:id' element={<Room user={user} />} />
+      <Route path='/' element={<Auth />} />
+      <Route path='/reg' element={<Registration />} />
+      <Route path='/profile/:login' element={<Room />} />
     </Routes>
   )
 }

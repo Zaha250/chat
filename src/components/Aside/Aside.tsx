@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './aside.module.scss';
 import {UserTypes} from "../../types";
+import Chats from "../Chats/Chats";
 
 type AsideProps = {
     users: UserTypes[]
@@ -9,12 +10,8 @@ type AsideProps = {
 const Aside:React.FC<AsideProps> = ({users}) => {
     return (
         <aside className={classes.aside}>
-            <strong>Пользователи:</strong>
-            <ul>
-                { users && users.map(user => (
-                    <li key={user.id + user.name}>{user.name}</li>
-                )) }
-            </ul>
+            <h2 className={classes.title}>Чаты</h2>
+            <Chats users={users} />
         </aside>
     );
 };

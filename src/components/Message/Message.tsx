@@ -1,14 +1,15 @@
 import React from 'react';
 import classes from './message.module.scss';
+import {MessageTypes} from "../../types";
 
-type MessageProps = {
-    content: any
+interface IMessageProps {
+    message: MessageTypes
 }
 
-const Message:React.FC<MessageProps> = ({content}) => {
+const Message:React.FC<IMessageProps> = ({message}) => {
     return (
         <div className={classes.item}>
-            <div className={classes.content}>{content}</div>
+            <div className={[classes.content, classes.message, message.own ? classes.own : ''].join(' ')}>{message.content}</div>
         </div>
     );
 };

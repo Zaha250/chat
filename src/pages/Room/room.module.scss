@@ -1,5 +1,4 @@
 .room{
-  display: flex;
   max-width: 960px;
   margin: 0 auto;
 }
@@ -9,10 +8,16 @@
   flex-direction: column;
   margin-bottom: 24px;
   padding: 24px;
-  background-color: #fff;
 }
 
-.right{
+.body{
+  display: flex;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   margin-left: 24px;
 }

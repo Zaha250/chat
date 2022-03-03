@@ -10,7 +10,7 @@ const ErrorMessage:React.FC<ErrorMessageProps> = ({message}) => {
     return (
         <Space>
             <WarningOutlined />
-            <p>{message}</p>
+            <p style={{ color: "tomato" }}>{message}</p>
         </Space>
     );
 };
