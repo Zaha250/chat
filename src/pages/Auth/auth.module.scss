@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  text-align: center;
 }
 
 .input{
@@ -11,5 +12,14 @@
 }
 
 .form{
-  max-width: 420px;
+  max-width: 340px;
+}
+
+.submitBtn{
+  margin-top: 16px;
+}
+
+.link{
+  display: inline-block;
+  margin-top: 16px;
 }

@@ -1,4 +1,4 @@
-export default {
+const initialState = {
     auth: {
         error: null,
         isLoad: false
@@ -7,4 +7,6 @@ export default {
         error: null,
         isLoad: false
     }
-}
+};
+
+export default initialState;
