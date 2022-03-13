@@ -15,6 +15,7 @@ export const signIn = createAsyncThunk(
                 return rejectWithValue(response.data.error);
             }
             dispatch(setUser(response.data.user));
+            localStorage.setItem('authUser', JSON.stringify(response.data.user));
             return data;
         } catch (e) {
             return rejectWithValue(e);

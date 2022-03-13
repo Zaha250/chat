@@ -1,6 +1,7 @@
 .room{
   max-width: 960px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .list{
@@ -12,6 +13,7 @@
 
 .body{
   display: flex;
+  height: calc(100% - 110px);
 }
 
 .main{
@@ -20,4 +22,5 @@
   justify-content: space-between;
   width: 100%;
   margin-left: 24px;
+  padding-bottom: 24px;
 }

@@ -9,5 +9,6 @@ export type UserTypes = {
 export type MessageTypes = {
     userName: string,
     content: string,
-    own?: boolean
+    own?: boolean,
+    timestamp: number
 }

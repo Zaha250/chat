@@ -14,6 +14,7 @@ const Header:React.FC = () => {
 
     const logout = () => {
         dispatch(setUser({}));
+        localStorage.removeItem('authUser');
         history('/');
     }
 

@@ -1,27 +1,36 @@
 .item{
+  display: flex;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFF;
+  padding: 10px;
   margin-bottom: 8px;
-  max-width: 350px;
+  max-width: 320px;
+  background: #7B61FF;
+  border-radius: 0 10px 10px 10px;
 
   &:last-child{
     margin-bottom: 0;
   }
 }
 
-.message{
-  display: inline-block;
-  font-size: 14px;
-  line-height: 16px;
-  color: #FFFFFF;
-  padding: 10px;
+.ownItem{
+  background: #E4E3FF;
+  border-radius: 10px 0 10px 10px;
+  color: #000;
+  margin-left: auto;
+}
+
+.strangerItem{
+  margin-right: auto;
 }
 
 .content{
-  background: #7B61FF;
-  border-radius: 0px 10px 10px 10px;
+
 }
 
-.own{
-  background: #E4E3FF;
-  border-radius: 0px 10px 10px 10px;
-  color: #000;
+.time{
+  margin-left: 6px;
+  font-size: 12px;
+  font-style: italic;
 }
