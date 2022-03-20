@@ -32,7 +32,7 @@ const Registration:React.FC = () => {
             setError(response.data.error);
             return;
         }
-        history('/');
+        history('/auth');
     }
 
     return (
@@ -96,7 +96,7 @@ const Registration:React.FC = () => {
                 >
                     Зарегистрироваться
                 </Button>
-                <Link to='/' className={classes.link}>Войти</Link>
+                <Link to='/auth' className={classes.link}>Войти</Link>
             </form>
         </main>
     );

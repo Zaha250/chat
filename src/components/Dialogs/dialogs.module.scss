@@ -1,4 +1,4 @@
-.chat{
+.dialog{
   display: flex;
   align-items: center;
   width: 100%;
@@ -6,8 +6,16 @@
   border-radius: 10px;
   transition: background .15s ease-in;
   cursor: pointer;
+
+  &:hover{
+    background-color: #f6f2ff;
+  }
 }
 
 .name{
   margin-left: 12px;
+}
+
+.active{
+  background-color: #f6f2ff;
 }

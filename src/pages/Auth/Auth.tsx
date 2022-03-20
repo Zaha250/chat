@@ -30,7 +30,7 @@ const Auth:React.FC = () => {
 
     useEffect(() => {
         if(login) {
-            history(`/profile/${login}`);
+            history('/');
         }
     }, [login]);
 

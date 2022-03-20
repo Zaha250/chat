@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react';
-import { Routes, Route } from "react-router-dom";
+import {useSelector} from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
 import socket from './socket';
-import './App.css';
 import Auth from "./pages/Auth/Auth";
 import Room from "./pages/Room/Room";
 import Registration from "./pages/Registration/Registration";
+import {getUserState} from "./store/user/selectors";
+import './App.css';
 
 const App:React.FC = () => {
+    const user = useSelector(getUserState);
 
   useEffect((): void => {
     socket.on("connect", () => {
@@ -16,9 +19,9 @@ const App:React.FC = () => {
 
   return(
     <Routes>
-      <Route path='/' element={<Auth />} />
+        <Route path='/' element={<Room />} />
+      <Route path='/auth' element={<Auth />} />
       <Route path='/reg' element={<Registration />} />
-      <Route path='/profile/:login' element={<Room />} />
     </Routes>
   )
 }

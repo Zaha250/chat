@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import classes from './aside.module.scss';
-import {UserTypes} from "../../types";
-import Chats from "../Chats/Chats";
+import {dialogTypes} from "../../types";
+import Dialogs from "../Dialogs/Dialogs";
 
 type AsideProps = {
-    users: UserTypes[]
+    dialogs: dialogTypes[]
 }
 
-const Aside:React.FC<AsideProps> = ({users}) => {
+const Aside:React.FC<AsideProps> = ({dialogs}) => {
+    const dialogsItems = useMemo(() => dialogs, [dialogs]);
+
     return (
         <aside className={classes.aside}>
             <h2 className={classes.title}>Чаты</h2>
-            <Chats users={users} />
+            <Dialogs dialogs={dialogsItems} />
         </aside>
     );
 };
